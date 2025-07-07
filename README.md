@@ -39,3 +39,15 @@ This script scrapes publicly available images of “The Orchid Hotel Pune” fro
 1. Install dependencies:
    ```bash
    npm install puppeteer axios adm-zip
+
+2. Run the script:
+   ```bash
+   node scrape.js
+3. Output:
+   ```bash
+   Images saved in hotel_images/
+
+   A final archive: hotel_images.zip
+
+
+
