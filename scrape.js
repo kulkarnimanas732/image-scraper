@@ -44,7 +44,7 @@ async function scrapeImages() {
   (url) => !url.includes('favicon') && url.startsWith('http')
 );
 
-  console.log(`🔍 Valid image URLs found: ${imageUrls.length}`);
+  console.log(`Valid image URLs found: ${imageUrls.length}`);
 
   const seenHashes = new Set();
   let count = 0;
@@ -56,7 +56,7 @@ async function scrapeImages() {
       const hash = hashBuffer(buffer);
 
       if (seenHashes.has(hash)) {
-        console.log(`⚠️ Skipped duplicate image`);
+        console.log(` Skipped duplicate image`);
         continue;
       }
 
@@ -65,10 +65,10 @@ async function scrapeImages() {
       const ext = url.includes('.png') ? 'png' : 'jpg';
       const filePath = path.join(downloadDir, `image_${count}.${ext}`);
       fs.writeFileSync(filePath, buffer);
-      console.log(`✅ Saved image_${count}.${ext}`);
+      console.log(`Saved image_${count}.${ext}`);
       count++;
     } catch (err) {
-      console.log(`❌ Failed to download image from: ${url}`);
+      console.log(` Failed to download image from: ${url}`);
     }
   }
 
@@ -76,7 +76,7 @@ async function scrapeImages() {
   zip.addLocalFolder(downloadDir);
   zip.writeZip(zipFilePath);
 
-  console.log(`📦 ZIP created: ${zipFilePath}`);
+  console.log(`ZIP created: ${zipFilePath}`);
 }
 
 scrapeImages();
